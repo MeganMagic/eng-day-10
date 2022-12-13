@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Interaction from "../components/Interaction";
+import Interaction from "../components/Interaction/Interaction";
 
 const FirstSectionWrapper = styled.div``;
 
