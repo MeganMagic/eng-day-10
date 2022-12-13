@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "./components/GlobalStyle";
 import MainPage from "./pages/MainPage";
-import theme from "./theme";
+import theme from "./styles/theme";
 
 const App: React.FC = () => {
   return (
