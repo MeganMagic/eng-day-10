@@ -25,6 +25,7 @@ const Interaction: React.FC = () => {
   let radius: number;
   let padding: number;
   let pivotGap: number;
+  let edgeLength: number;
 
   let dots = [];
   let edges = [];
@@ -43,15 +44,21 @@ const Interaction: React.FC = () => {
       );
     }
 
-    display(p5: p5Types, p = this.pos, r = radius, c = KEY_COLOR.hex) {
+    display(
+      p5: p5Types,
+      x = this.pos.x,
+      y = this.pos.y,
+      r = radius,
+      c = KEY_COLOR.hex
+    ) {
       let angle = p5.TWO_PI / 8;
       let angleOffset = p5.TWO_PI / (8 * 2);
       p5.noStroke();
       p5.fill(c);
       p5.beginShape();
       for (let i = angleOffset; i < p5.TWO_PI + angleOffset; i += angle) {
-        let sx = p.x + p5.cos(i) * r;
-        let sy = p.y + p5.sin(i) * r;
+        let sx = x + p5.cos(i) * r;
+        let sy = y + p5.sin(i) * r;
         p5.vertex(sx, sy);
       }
       p5.endShape(p5.CLOSE);
@@ -63,6 +70,8 @@ const Interaction: React.FC = () => {
     targetPos;
     velocity;
     isMoved;
+    xs;
+    ys;
 
     constructor(x: number, y: number, tx: number, ty: number) {
       super(x, y);
@@ -75,6 +84,13 @@ const Interaction: React.FC = () => {
         .normalize()
         .setMag(5);
       this.isMoved = false;
+      this.xs = [];
+      this.ys = [];
+    }
+
+    pushLog() {
+      this.xs.push(this.mPos.x);
+      this.ys.push(this.mPos.y);
     }
 
     move(p5: p5Types, startFrame) {
@@ -83,13 +99,28 @@ const Interaction: React.FC = () => {
         return;
       }
 
-      if (this.isMoved) return;
+      if (this.isMoved === false) {
+        this.mPos.add(this.velocity);
+        const dist = window.p5.Vector.dist(this.targetPos, this.mPos);
+        if (dist < 5) this.isMoved = true;
+        this.pushLog();
+      }
 
-      const dist = window.p5.Vector.dist(this.targetPos, this.mPos);
-      if (dist < 5) this.isMoved = true;
+      for (let i = 0; i < this.xs.length; i += 1) {
+        const mappedColor = `rgba(
+          ${KEY_COLOR.rgb.r},
+          ${KEY_COLOR.rgb.g},
+          ${KEY_COLOR.rgb.b},
+          ${p5.map(i, 0, this.xs.length, 0, 1)}
+        )`;
 
-      this.display(p5, this.mPos);
-      this.mPos.add(this.velocity);
+        this.display(p5, this.xs[i], this.ys[i], radius, mappedColor);
+      }
+
+      if (this.xs.length > edgeLength || this.isMoved === true) {
+        this.xs.shift();
+        this.ys.shift();
+      }
     }
   }
   const setup = (p5: p5Types, canvasParentRef: Element) => {
@@ -101,7 +132,7 @@ const Interaction: React.FC = () => {
   };
 
   const draw = (p5: p5Types) => {
-    p5.background("rgba(0, 0, 0, 0.05)");
+    p5.background(BG_COLOR.hex);
 
     for (let edge of edges) edge.move(p5, 120);
     for (let dot of dots) dot.display(p5);
@@ -126,6 +157,7 @@ const Interaction: React.FC = () => {
         radius = WIDE_VALUE.radius;
         padding = WIDE_VALUE.padding;
         pivotGap = WIDE_VALUE.pivotGap;
+        edgeLength = WIDE_VALUE.edgeLength;
         break;
       case "DESKTOP":
         boxWidth = DESKTOP_VALUE.boxWidth;
@@ -135,6 +167,7 @@ const Interaction: React.FC = () => {
         radius = DESKTOP_VALUE.radius;
         padding = DESKTOP_VALUE.padding;
         pivotGap = DESKTOP_VALUE.pivotGap;
+        edgeLength = DESKTOP_VALUE.edgeLength;
         break;
       case "TABLET":
         boxWidth = TABLET_VALUE.boxWidth;
@@ -144,6 +177,7 @@ const Interaction: React.FC = () => {
         radius = TABLET_VALUE.radius;
         padding = TABLET_VALUE.padding;
         pivotGap = TABLET_VALUE.pivotGap;
+        edgeLength = TABLET_VALUE.edgeLength;
         break;
       default:
         boxWidth = MOBILE_VALUE.boxWidth;
@@ -153,6 +187,7 @@ const Interaction: React.FC = () => {
         radius = MOBILE_VALUE.radius;
         padding = MOBILE_VALUE.padding;
         pivotGap = MOBILE_VALUE.pivotGap;
+        edgeLength = MOBILE_VALUE.edgeLength;
     }
 
     let newDots = [];
