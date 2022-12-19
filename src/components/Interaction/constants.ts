@@ -11,8 +11,8 @@ export type P5Color = {
 };
 
 export const KEY_COLOR: P5Color = {
-  hex: "#4B34D8",
-  rgb: { r: 69, g: 43, b: 221 },
+  hex: "#452CDD",
+  rgb: { r: 69, g: 44, b: 221 },
 };
 
 export const BG_COLOR: P5Color = {
@@ -29,6 +29,7 @@ export type InteractionFixedValue = {
   radius: number;
   padding: number;
   pivotGap: number;
+  edgeLength: number;
 };
 
 export const MOBILE_VALUE: InteractionFixedValue = {
@@ -39,6 +40,7 @@ export const MOBILE_VALUE: InteractionFixedValue = {
   radius: 20,
   pivotGap: 120,
   padding: 47.5,
+  edgeLength: 40,
 };
 
 export const TABLET_VALUE: InteractionFixedValue = {
@@ -49,6 +51,7 @@ export const TABLET_VALUE: InteractionFixedValue = {
   radius: 40,
   pivotGap: 180,
   padding: 50,
+  edgeLength: 40,
 };
 
 export const DESKTOP_VALUE: InteractionFixedValue = {
@@ -59,6 +62,7 @@ export const DESKTOP_VALUE: InteractionFixedValue = {
   radius: 60,
   pivotGap: 280,
   padding: 60,
+  edgeLength: 40,
 };
 
 export const WIDE_VALUE: InteractionFixedValue = {
@@ -69,4 +73,5 @@ export const WIDE_VALUE: InteractionFixedValue = {
   radius: 60,
   pivotGap: 280,
   padding: 60,
+  edgeLength: 40,
 };
