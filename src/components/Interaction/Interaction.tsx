@@ -30,6 +30,14 @@ const Interaction: React.FC = () => {
   let dots = [];
   let edges = [];
 
+  let scene: number = 300;
+  let sceneNumber: number = 3;
+  let totalScene: number = scene * sceneNumber;
+  let frame = (frameCount) => {
+    return frameCount % totalScene;
+  };
+
+  /* Dot */
   class Dot {
     x;
     y;
@@ -63,8 +71,22 @@ const Interaction: React.FC = () => {
       }
       p5.endShape(p5.CLOSE);
     }
+
+    pulse(p5: p5Types) {
+      const mousePos = new Vector(p5.mouseX, p5.mouseY);
+      const dist = window.p5.Vector.dist(mousePos, this.pos);
+      const maxDist = window.p5.Vector.dist(
+        new Vector(0, 0),
+        new Vector(boxWidth, boxHeight)
+      );
+      const weight = p5.map(dist, 0, maxDist / 2, radius / 5, 0);
+      const opacityWeight = p5.map(dist, 0, maxDist / 2, 0.75, 0);
+      const color = `rgba(${KEY_COLOR.rgb.r}, ${KEY_COLOR.rgb.g}, ${KEY_COLOR.rgb.b}, ${opacityWeight})`;
+      this.display(p5, this.pos.x, this.pos.y, radius + weight, color);
+    }
   }
 
+  /* Edge */
   class Edge extends Dot {
     mPos;
     targetPos;
@@ -82,7 +104,7 @@ const Interaction: React.FC = () => {
       );
       this.velocity = window.p5.Vector.sub(this.targetPos, this.pos)
         .normalize()
-        .setMag(5);
+        .setMag(8);
       this.isMoved = false;
       this.xs = [];
       this.ys = [];
@@ -94,9 +116,10 @@ const Interaction: React.FC = () => {
     }
 
     move(p5: p5Types, startFrame) {
-      if (startFrame > p5.frameCount) {
-        console.log("not yet!");
-        return;
+      if (frame(p5.frameCount) === 0) {
+        // setting init
+        this.isMoved = false;
+        this.mPos = new Vector(this.pos.x, this.pos.y);
       }
 
       if (this.isMoved === false) {
@@ -117,12 +140,13 @@ const Interaction: React.FC = () => {
         this.display(p5, this.xs[i], this.ys[i], radius, mappedColor);
       }
 
-      if (this.xs.length > edgeLength || this.isMoved === true) {
+      if (this.xs.length >= edgeLength || this.isMoved === true) {
         this.xs.shift();
         this.ys.shift();
       }
     }
   }
+
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     init();
     p5.createCanvas(boxWidth, boxHeight).parent(canvasParentRef);
@@ -135,7 +159,10 @@ const Interaction: React.FC = () => {
     p5.background(BG_COLOR.hex);
 
     for (let edge of edges) edge.move(p5, 120);
-    for (let dot of dots) dot.display(p5);
+    for (let dot of dots) {
+      dot.pulse(p5);
+      dot.display(p5);
+    }
     p5.text(`(${p5.mouseX}, ${p5.mouseY})`, p5.mouseX, p5.mouseY);
   };
 
