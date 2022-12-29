@@ -75,16 +75,15 @@ const TalkSectionWrapper = styled.div`
     gap: 32px;
     
     .talk-list-item {
-      display: flex;
-      width: 640px;
-      height: 320px;
+      display: grid;
+      grid-template-columns: 365px 275px;
+      grid-template-rows: 320px;
       border-radius: 20px;
       
       .text-box {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 340px;
         background: #191919;
         padding: 40px 0 40px 40px;
         border-radius: 20px 0 0 20px;
@@ -122,11 +121,13 @@ const TalkSectionWrapper = styled.div`
       }
       
       .img-container {
-        width: 275px;
+        width: 100%;
+        height: 100%;
         
         img {
           width: 100%;
           height: 100%;
+          object-fit: fill;
         }
       }
     }
