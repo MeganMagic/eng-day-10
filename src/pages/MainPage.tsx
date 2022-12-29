@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import FirstSection from "sections/FirstSection";
 import OutlineSection from "../sections/OutlineSection";
+import TalkSection from "../sections/TalkSection";
 
 const MainPageWrapper = styled.div`
   background-color: #000000;
@@ -14,6 +15,7 @@ const MainPage: React.FC = () => {
     <MainPageWrapper>
       <FirstSection />
       <OutlineSection />
+      <TalkSection />
     </MainPageWrapper>
   );
 };
