@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import map from  "../assets/outline-section-map.png";
-import contentItemEmoji1 from "../assets/outline-section-content-emoji-1.png";
-import contentItemEmoji2 from "../assets/outline-section-content-emoji-2.png";
-import contentItemEmoji3 from "../assets/outline-section-content-emoji-3.png";
+import contentItemEmoji1 from "../assets/emoji-clap.png";
+import contentItemEmoji2 from "../assets/emoji-write.png";
+import contentItemEmoji3 from "../assets/emoji-handshake.png";
 
 const CONTENTS_DATA = [
   {
