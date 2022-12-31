@@ -4,16 +4,22 @@ import map from  "../assets/outline-section-map.png";
 import contentItemEmoji1 from "../assets/emoji-clap.png";
 import contentItemEmoji2 from "../assets/emoji-write.png";
 import contentItemEmoji3 from "../assets/emoji-handshake.png";
+import { useWindowSize } from "../utils/hooks/useWindowSize";
 
 const CONTENTS_DATA = [
   {
     emoji: contentItemEmoji1,
     altText: "박수치는 이모지",
     title: <>발표 세션</>,
-    description: (
+    descriptionTablet: (
       <>
         ENG 크루들의 고민, 경험,
         <br />인사이트를 만나보세요
+      </>
+    ),
+    descriptionMobile: (
+      <>
+        ENG 크루들의 고민, 경험, 인사이트를 만나보세요
       </>
     )
   },
@@ -21,10 +27,15 @@ const CONTENTS_DATA = [
     emoji: contentItemEmoji2,
     altText: "글쓰는 이모지",
     title: <>ENG 능력평가</>,
-    description: (
+    descriptionTablet: (
       <>
         당신은 ENG팀과 크루들에
-        <br />대해 얼마나 알고 있나요?
+        <br /> 대해 얼마나 알고 있나요?
+      </>
+    ),
+    descriptionMobile: (
+      <>
+        당신은 ENG팀과 크루들에 대해 얼마나 알고 있나요?
       </>
     )
   },
@@ -32,10 +43,15 @@ const CONTENTS_DATA = [
     emoji: contentItemEmoji3,
     altText: "손하트 이모지",
     title: <>네트워킹</>,
-    description: (
+    descriptionTablet: (
       <>
         ENG 크루들과
         <br />자유롭게 이야기 나눠요
+      </>
+    ),
+    descriptionMobile: (
+      <>
+        당신은 ENG팀과 크루들에 대해 얼마나 알고 있나요?
       </>
     )
   }
@@ -45,17 +61,17 @@ const CONTENTS_DATA = [
 const OutlineSectionWrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 120px 0;
+  padding: 80px 0;
   flex-direction: column;
   align-items: center;
   text-align: center;
   
   .section-title {
     font-weight: 900;
-    font-size: 48px;
-    line-height: 64px;
+    font-size: 24px;
+    line-height: 36px;
     letter-spacing: -0.04em;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     
     strong {
       color: #6C56F5;
@@ -65,14 +81,14 @@ const OutlineSectionWrapper = styled.div`
   .description-box {
     display: flex;
     flex-direction: column;
-    gap: 36px;
-    margin-bottom: 80px;
+    gap: 24px;
+    margin-bottom: 40px;
     
     
     .section-description {
       font-weight: 400;
-      font-size: 24px;
-      line-height: 36px;
+      font-size: 14px;
+      line-height: 21px;
       letter-spacing: -0.025em;
       
       strong {
@@ -80,15 +96,39 @@ const OutlineSectionWrapper = styled.div`
       }
     }
   }
+  
+  ${({theme}) => theme.breakpoint.tablet} {
+    padding: 120px 0;
+
+    .section-title {
+      font-size: 48px;
+      line-height: 64px;
+      margin-bottom: 80px;
+    }
+
+    .description-box {
+      gap: 36px;
+      margin-bottom: 80px;
+
+
+      .section-description {
+        font-size: 24px;
+        line-height: 36px;
+      }
+    }
+  }
 `;
 
 const LocationCard = styled.div`
-  width: 360px;
+  width: 315px;
   margin-bottom: 80px;
   
   .map-img-container {
+    height: 240px;
     img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 20px 20px 0 0;
     } 
   }
@@ -96,14 +136,14 @@ const LocationCard = styled.div`
   .map-text {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 32px 0 40px;
+    gap: 4px;
+    padding: 24px 0 32px;
     background: #191919;
     border-radius: 0 0 20px 20px ;
     
     .location-name {
       font-weight: 700;
-      font-size: 18px;
+      font-size: 14px;
       line-height: 21px;
       letter-spacing: -0.025em;
     }
@@ -115,45 +155,90 @@ const LocationCard = styled.div`
       letter-spacing: -0.025em;
     }
   }
+
+  ${({theme}) => theme.breakpoint.tablet} {
+    width: 360px;
+
+    .map-text {
+      gap: 8px;
+      padding: 32px 0 40px;
+
+      .location-name {
+        font-size: 18px;
+      }
+    }
+  }
 `
 
 const EngDayContents = styled.div`
   .section-subtitle {
     font-weight: 900;
-    font-size: 28px;
-    line-height: 42px;
+    font-size: 18px;
+    line-height: 27px;
     letter-spacing: -0.025em;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
   
   .contents-list {
     display: flex;
-    gap: 32px;
+    flex-direction: column;
+    gap: 16px;
     
     .contents-list-item {
-      width: 200px;
-      padding: 26px 0 27px;
+      width: 315px;
+      padding: 20px 0;
       background: #191919;
       border-radius: 20px;
       
       img {
         width: 48px;
-        margin-bottom: 15px;
+        margin-bottom: 6px;
       }
       
       > h4 {
         font-weight: 700;
-        font-size: 18px;
+        font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.025em;
-        margin-bottom: 16px;
+        margin-bottom: 4px;
       }
       
       > p {
         font-weight: 400;
-        font-size: 14px;
+        font-size: 12px;
         line-height: 21px;
         letter-spacing: -0.025em;
+      }
+    }
+  }
+
+  ${({theme}) => theme.breakpoint.tablet} {
+    .section-subtitle {
+      font-size: 28px;
+      line-height: 42px;
+      margin-bottom: 32px;
+    }
+
+    .contents-list {
+      flex-direction: row;
+      gap: 32px;
+
+      .contents-list-item {
+        width: 200px;
+        padding: 26px 0 27px;
+
+        img {
+          margin-bottom: 15px;
+        }
+
+        > h4 {
+          font-size: 18px;
+          margin-bottom: 16px;
+        }
+
+        > p {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -161,6 +246,9 @@ const EngDayContents = styled.div`
 
 
 const OutlineSection: React.FC = () => {
+  const { width } = useWindowSize();
+  const isTablet = width ? width > 767 : false;
+
   return (
     <OutlineSectionWrapper>
       <h2 className="section-title">
@@ -208,7 +296,7 @@ const OutlineSection: React.FC = () => {
             <li className="contents-list-item">
               <img src={content.emoji} alt={content.altText}/>
               <h4>{content.title}</h4>
-              <p>{content.description}</p>
+              <p>{isTablet ? content.descriptionTablet : content.descriptionMobile}</p>
             </li>)
           )}
         </ul>
