@@ -38,33 +38,33 @@ const TalkSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 120px 0 180px;
+  padding: 80px 0;
   
   .title-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     
     .emoji-box {
-      width: 120px;
-      height: 120px;
-      border-radius: 60px;
+      width: 80px;
+      height: 80px;
+      border-radius: 40px;
       background: #191919;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       
       img {
-        width: 60px;
+        width: 40px;
       }
     }
     
     > h2 {
       font-weight: 900;
-      font-size: 48px;
-      line-height: 64px;
+      font-size: 24px;
+      line-height: 36px;
       letter-spacing: -0.04em;
     }
   }
@@ -76,8 +76,8 @@ const TalkSectionWrapper = styled.div`
     
     .talk-list-item {
       display: grid;
-      grid-template-columns: 365px 275px;
-      grid-template-rows: 320px;
+      grid-template-columns: 186px 129px;
+      grid-template-rows: 220px;
       border-radius: 20px;
       
       .text-box {
@@ -85,34 +85,36 @@ const TalkSectionWrapper = styled.div`
         flex-direction: column;
         justify-content: space-between;
         background: #191919;
-        padding: 40px 0 40px 40px;
+        padding: 20px;
         border-radius: 20px 0 0 20px;
         
         .talk-texts {
           > h3 {
             font-weight: 700;
-            font-size: 24px;
-            line-height: 36px;
+            font-size: 16px;
+            line-height: 24px;
             letter-spacing: -0.04em;
-            margin-bottom: 11px;
+            margin-bottom: 8px;
           }
           
           > p {
             font-weight: 400;
-            font-size: 18px;
-            line-height: 27px;
+            font-size: 14px;
+            line-height: 21px;
+            color: #CCCCCC;
           }
         }
         
         .button-box {
           button {
-            padding: 6px 28px;
+            width: 100%;
+            padding: 12px 28px;
             background: #191919;
             border: 1px solid #373737;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 14px;
-            line-height: 36px;
+            font-size: 12px;
+            line-height: 18px;
             letter-spacing: -0.04em;
             color: #FFFFFF;
             cursor: pointer;
@@ -125,9 +127,89 @@ const TalkSectionWrapper = styled.div`
         height: 100%;
         
         img {
+          border-radius: 0 20px 20px 0;
           width: 100%;
           height: 100%;
-          object-fit: fill;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  ${({theme}) => theme.breakpoint.tablet} {
+    padding: 120px 0 180px;
+
+    .title-box {
+      margin-bottom: 80px;
+
+      .emoji-box {
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+        margin-bottom: 16px;
+
+        img {
+          width: 60px;
+        }
+      }
+
+      > h2 {
+        font-size: 48px;
+        line-height: 64px;
+      }
+    }
+
+    .talk-list {
+      gap: 32px;
+
+      .talk-list-item {
+        display: grid;
+        grid-template-columns: 365px 275px;
+        grid-template-rows: 320px;
+        border-radius: 20px;
+
+        .text-box {
+          padding: 30px;
+          border-radius: 20px 0 0 20px;
+
+          .talk-texts {
+            > h3 {
+              font-size: 24px;
+              line-height: 36px;
+              margin-bottom: 11px;
+            }
+
+            > p {
+              font-size: 18px;
+              line-height: 27px;
+            }
+          }
+
+          .button-box {
+            button {
+              padding: 12px 0px;
+              background: #191919;
+              border: 1px solid #373737;
+              border-radius: 8px;
+              font-weight: 700;
+              font-size: 14px;
+              line-height: 21px;
+              letter-spacing: -0.04em;
+              color: #FFFFFF;
+              cursor: pointer;
+            }
+          }
+        }
+
+        .img-container {
+          width: 100%;
+          height: 100%;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+          }
         }
       }
     }
