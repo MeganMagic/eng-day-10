@@ -27,10 +27,12 @@ const Interaction: React.FC = () => {
   let pivotGap: number;
   let edgeLength: number;
 
-  let dots = [];
-  let edges = [];
+  let dots: Dot[] = [];
+  let edges1_desktop: Edge[] = [];
+  let edges2_desktop: Edge[] = [];
+  let edges3_desktop: Edge[] = [];
 
-  let scene: number = 300;
+  let scene: number = 200;
   let sceneNumber: number = 3;
   let totalScene: number = scene * sceneNumber;
   let frame = (frameCount) => {
@@ -104,7 +106,7 @@ const Interaction: React.FC = () => {
       );
       this.velocity = window.p5.Vector.sub(this.targetPos, this.pos)
         .normalize()
-        .setMag(8);
+        .setMag(5);
       this.isMoved = false;
       this.xs = [];
       this.ys = [];
@@ -117,9 +119,12 @@ const Interaction: React.FC = () => {
 
     move(p5: p5Types, startFrame) {
       if (frame(p5.frameCount) === 0) {
-        // setting init
         this.isMoved = false;
         this.mPos = new Vector(this.pos.x, this.pos.y);
+      }
+
+      if (frame(p5.frameCount) <= startFrame) {
+        return;
       }
 
       if (this.isMoved === false) {
@@ -151,14 +156,34 @@ const Interaction: React.FC = () => {
     init();
     p5.createCanvas(boxWidth, boxHeight).parent(canvasParentRef);
 
-    const edge1 = new Edge(1, 1, 2, 2);
-    edges.push(edge1);
+    edges1_desktop = [
+      new Edge(0, 0, 1, 1),
+      new Edge(1, 1, 2, 0),
+      new Edge(2, 1, 1, 2),
+      new Edge(3, 1, 2, 2),
+    ];
+    edges2_desktop = [
+      new Edge(0, 1, 1, 0),
+      new Edge(2, 1, 3, 0),
+      new Edge(2, 2, 1, 1),
+      new Edge(3, 1, 2, 2),
+    ];
+    edges3_desktop = [
+      new Edge(0, 0, 1, 1),
+      new Edge(2, 0, 3, 1),
+      new Edge(1, 2, 0, 1),
+      new Edge(2, 1, 1, 2),
+    ];
   };
 
   const draw = (p5: p5Types) => {
     p5.background(BG_COLOR.hex);
 
-    for (let edge of edges) edge.move(p5, 120);
+    // check device
+    for (let edge of edges1_desktop) edge.move(p5, 0);
+    for (let edge of edges2_desktop) edge.move(p5, scene);
+    for (let edge of edges3_desktop) edge.move(p5, scene * 2);
+
     for (let dot of dots) {
       dot.pulse(p5);
       dot.display(p5);

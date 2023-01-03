@@ -62,7 +62,7 @@ export const DESKTOP_VALUE: InteractionFixedValue = {
   radius: 60,
   pivotGap: 280,
   padding: 60,
-  edgeLength: 50,
+  edgeLength: 80,
 };
 
 export const WIDE_VALUE: InteractionFixedValue = {
