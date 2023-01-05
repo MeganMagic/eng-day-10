@@ -4,6 +4,7 @@ import FirstSection from "sections/FirstSection";
 import OutlineSection from "../sections/OutlineSection";
 import TalkSection from "../sections/TalkSection";
 import NetworkingSection from "../sections/NetworkingSection";
+import TimetableSection from "../sections/TimetableSection";
 
 const MainPageWrapper = styled.div`
   background-color: #000000;
@@ -18,6 +19,7 @@ const MainPage: React.FC = () => {
       <OutlineSection />
       <TalkSection />
       <NetworkingSection />
+      <TimetableSection />
     </MainPageWrapper>
   );
 };
