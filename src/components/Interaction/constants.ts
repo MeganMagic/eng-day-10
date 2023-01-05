@@ -62,7 +62,7 @@ export const DESKTOP_VALUE: InteractionFixedValue = {
   radius: 60,
   pivotGap: 280,
   padding: 60,
-  edgeLength: 80,
+  edgeLength: 78,
 };
 
 export const WIDE_VALUE: InteractionFixedValue = {
@@ -75,3 +75,30 @@ export const WIDE_VALUE: InteractionFixedValue = {
   padding: 60,
   edgeLength: 60,
 };
+
+export const colors = [
+  "#452CDD",
+  "#452CDD",
+  "#452CDD",
+  "#452CDD",
+  "#452CDD",
+  "#412AD1",
+  "#3E27C6",
+  "#3A25BA",
+  "#3623AE",
+  "#3320A3",
+  "#2F1E97",
+  "#2C1C8C",
+  "#281980",
+  "#241774",
+  "#211569",
+  "#1D135D",
+  "#191051",
+  "#160E46",
+  "#120C3A",
+  "#0F092F",
+  "#0B0723",
+  "#070517",
+  "#04020C",
+  "#000000",
+];

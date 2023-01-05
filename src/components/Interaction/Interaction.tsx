@@ -11,6 +11,7 @@ import {
   WIDE_VALUE,
   P5Color,
   Device,
+  colors,
 } from "./constants";
 
 const Interaction: React.FC = () => {
@@ -135,12 +136,21 @@ const Interaction: React.FC = () => {
       }
 
       for (let i = 0; i < this.xs.length; i += 1) {
-        const mappedColor = `rgba(
-          ${KEY_COLOR.rgb.r},
-          ${KEY_COLOR.rgb.g},
-          ${KEY_COLOR.rgb.b},
-          ${p5.map(i, 0, this.xs.length, 0, 1)}
-        )`;
+        const expandIndex = Math.floor(
+          p5.map(
+            i,
+            this.xs.length - edgeLength,
+            this.xs.length,
+            colors.length - 1,
+            0
+          )
+        );
+        const collapseIndex = Math.floor(
+          p5.map(i, 0, edgeLength, colors.length - 1, 0)
+        );
+        const mappedColor = !this.isMoved
+          ? colors[expandIndex]
+          : colors[collapseIndex];
 
         this.display(p5, this.xs[i], this.ys[i], radius, mappedColor);
       }
