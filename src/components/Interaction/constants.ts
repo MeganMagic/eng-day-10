@@ -30,6 +30,7 @@ export type InteractionFixedValue = {
   padding: number;
   pivotGap: number;
   edgeLength: number;
+  velocity: number;
 };
 
 export const MOBILE_VALUE: InteractionFixedValue = {
@@ -40,7 +41,8 @@ export const MOBILE_VALUE: InteractionFixedValue = {
   radius: 20,
   pivotGap: 120,
   padding: 47.5,
-  edgeLength: 30,
+  edgeLength: 82,
+  velocity: 2,
 };
 
 export const TABLET_VALUE: InteractionFixedValue = {
@@ -51,7 +53,8 @@ export const TABLET_VALUE: InteractionFixedValue = {
   radius: 40,
   pivotGap: 180,
   padding: 50,
-  edgeLength: 40,
+  edgeLength: 62,
+  velocity: 4,
 };
 
 export const DESKTOP_VALUE: InteractionFixedValue = {
@@ -63,6 +66,7 @@ export const DESKTOP_VALUE: InteractionFixedValue = {
   pivotGap: 280,
   padding: 60,
   edgeLength: 78,
+  velocity: 5,
 };
 
 export const WIDE_VALUE: InteractionFixedValue = {
@@ -73,7 +77,8 @@ export const WIDE_VALUE: InteractionFixedValue = {
   radius: 60,
   pivotGap: 280,
   padding: 60,
-  edgeLength: 60,
+  edgeLength: 78,
+  velocity: 5,
 };
 
 export const colors = [

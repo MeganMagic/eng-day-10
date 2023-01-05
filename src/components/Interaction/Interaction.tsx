@@ -27,14 +27,16 @@ const Interaction: React.FC = () => {
   let padding: number;
   let pivotGap: number;
   let edgeLength: number;
+  let velocity: number;
 
   let dots: Dot[] = [];
   let edges1_desktop: Edge[] = [];
   let edges2_desktop: Edge[] = [];
   let edges3_desktop: Edge[] = [];
+  let edges4_desktop: Edge[] = [];
 
   let scene: number = 200;
-  let sceneNumber: number = 3;
+  let sceneNumber: number = 4;
   let totalScene: number = scene * sceneNumber;
   let frame = (frameCount) => {
     return frameCount % totalScene;
@@ -95,19 +97,23 @@ const Interaction: React.FC = () => {
     targetPos;
     velocity;
     isMoved;
+    tx;
+    ty;
     xs;
     ys;
 
     constructor(x: number, y: number, tx: number, ty: number) {
       super(x, y);
       this.mPos = new Vector(this.pos.x, this.pos.y);
+      this.tx = tx;
+      this.ty = ty;
       this.targetPos = new Vector(
         padding + radius + tx * pivotGap,
         padding + radius + ty * pivotGap
       );
       this.velocity = window.p5.Vector.sub(this.targetPos, this.pos)
         .normalize()
-        .setMag(5);
+        .setMag(velocity);
       this.isMoved = false;
       this.xs = [];
       this.ys = [];
@@ -116,6 +122,23 @@ const Interaction: React.FC = () => {
     pushLog() {
       this.xs.push(this.mPos.x);
       this.ys.push(this.mPos.y);
+    }
+
+    resetPos() {
+      this.pos = new Vector(
+        padding + radius + this.x * pivotGap,
+        padding + radius + this.y * pivotGap
+      );
+      this.mPos = new Vector(this.pos.x, this.pos.y);
+      this.targetPos = new Vector(
+        padding + radius + this.tx * pivotGap,
+        padding + radius + this.ty * pivotGap
+      );
+      this.velocity = window.p5.Vector.sub(this.targetPos, this.pos)
+        .normalize()
+        .setMag(velocity);
+      this.xs = [];
+      this.ys = [];
     }
 
     move(p5: p5Types, startFrame) {
@@ -167,8 +190,8 @@ const Interaction: React.FC = () => {
     p5.createCanvas(boxWidth, boxHeight).parent(canvasParentRef);
 
     edges1_desktop = [
-      new Edge(0, 0, 1, 1),
       new Edge(1, 1, 2, 0),
+      new Edge(0, 0, 1, 1),
       new Edge(2, 1, 1, 2),
       new Edge(3, 1, 2, 2),
     ];
@@ -179,10 +202,16 @@ const Interaction: React.FC = () => {
       new Edge(3, 1, 2, 2),
     ];
     edges3_desktop = [
-      new Edge(0, 0, 1, 1),
+      new Edge(1, 1, 0, 0),
+      new Edge(2, 1, 3, 0),
+      new Edge(0, 2, 1, 1),
+      new Edge(3, 2, 2, 1),
+    ];
+    edges4_desktop = [
+      new Edge(1, 0, 0, 1),
       new Edge(2, 0, 3, 1),
-      new Edge(1, 2, 0, 1),
-      new Edge(2, 1, 1, 2),
+      new Edge(0, 1, 1, 2),
+      new Edge(3, 1, 2, 2),
     ];
   };
 
@@ -193,6 +222,7 @@ const Interaction: React.FC = () => {
     for (let edge of edges1_desktop) edge.move(p5, 0);
     for (let edge of edges2_desktop) edge.move(p5, scene);
     for (let edge of edges3_desktop) edge.move(p5, scene * 2);
+    for (let edge of edges4_desktop) edge.move(p5, scene * 3);
 
     for (let dot of dots) {
       dot.pulse(p5);
@@ -220,6 +250,7 @@ const Interaction: React.FC = () => {
         padding = WIDE_VALUE.padding;
         pivotGap = WIDE_VALUE.pivotGap;
         edgeLength = WIDE_VALUE.edgeLength;
+        velocity = WIDE_VALUE.velocity;
         break;
       case "DESKTOP":
         boxWidth = DESKTOP_VALUE.boxWidth;
@@ -230,6 +261,8 @@ const Interaction: React.FC = () => {
         padding = DESKTOP_VALUE.padding;
         pivotGap = DESKTOP_VALUE.pivotGap;
         edgeLength = DESKTOP_VALUE.edgeLength;
+        velocity = DESKTOP_VALUE.velocity;
+
         break;
       case "TABLET":
         boxWidth = TABLET_VALUE.boxWidth;
@@ -240,6 +273,8 @@ const Interaction: React.FC = () => {
         padding = TABLET_VALUE.padding;
         pivotGap = TABLET_VALUE.pivotGap;
         edgeLength = TABLET_VALUE.edgeLength;
+        velocity = TABLET_VALUE.velocity;
+
         break;
       default:
         boxWidth = MOBILE_VALUE.boxWidth;
@@ -250,6 +285,7 @@ const Interaction: React.FC = () => {
         padding = MOBILE_VALUE.padding;
         pivotGap = MOBILE_VALUE.pivotGap;
         edgeLength = MOBILE_VALUE.edgeLength;
+        velocity = MOBILE_VALUE.velocity;
     }
 
     let newDots = [];
@@ -264,6 +300,11 @@ const Interaction: React.FC = () => {
   const windowResized: SketchProps["windowResized"] = (p5) => {
     init();
     p5.resizeCanvas(boxWidth, boxHeight);
+
+    for (let edge of edges1_desktop) edge.resetPos();
+    for (let edge of edges2_desktop) edge.resetPos();
+    for (let edge of edges3_desktop) edge.resetPos();
+    for (let edge of edges4_desktop) edge.resetPos();
   };
 
   return (
