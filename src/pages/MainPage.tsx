@@ -7,6 +7,7 @@ import NetworkingSection from "../sections/NetworkingSection";
 import TimetableSection from "../sections/TimetableSection";
 import CommitteeSection from "../sections/CommitteeSection";
 import ArchivingSection from "../sections/ArchivingSection";
+import Header from "../components/Interaction/Header";
 
 const MainPageWrapper = styled.div`
   background-color: #000000;
@@ -17,6 +18,7 @@ const MainPageWrapper = styled.div`
 const MainPage: React.FC = () => {
   return (
     <MainPageWrapper>
+      <Header />
       <HeroSection />
       <OutlineSection />
       <TalkSection />

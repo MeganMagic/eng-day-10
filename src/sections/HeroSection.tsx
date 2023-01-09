@@ -123,7 +123,7 @@ const TextBox = styled.div`
 
     .text-info {
       font-size: 18px;
-      height: 27px;
+      line-height: 27px;
     }
   }
 `;
