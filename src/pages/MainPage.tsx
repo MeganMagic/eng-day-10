@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import FirstSection from "sections/FirstSection";
+import HeroSection from "sections/HeroSection";
 import OutlineSection from "../sections/OutlineSection";
 import TalkSection from "../sections/TalkSection";
 import NetworkingSection from "../sections/NetworkingSection";
@@ -17,7 +17,7 @@ const MainPageWrapper = styled.div`
 const MainPage: React.FC = () => {
   return (
     <MainPageWrapper>
-      <FirstSection />
+      <HeroSection />
       <OutlineSection />
       <TalkSection />
       <NetworkingSection />
