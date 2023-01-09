@@ -30,6 +30,7 @@ export type InteractionFixedValue = {
   padding: number;
   pivotGap: number;
   edgeLength: number;
+  velocity: number;
 };
 
 export const MOBILE_VALUE: InteractionFixedValue = {
@@ -40,7 +41,8 @@ export const MOBILE_VALUE: InteractionFixedValue = {
   radius: 20,
   pivotGap: 120,
   padding: 47.5,
-  edgeLength: 30,
+  edgeLength: 82,
+  velocity: 2,
 };
 
 export const TABLET_VALUE: InteractionFixedValue = {
@@ -51,7 +53,8 @@ export const TABLET_VALUE: InteractionFixedValue = {
   radius: 40,
   pivotGap: 180,
   padding: 50,
-  edgeLength: 40,
+  edgeLength: 80,
+  velocity: 3,
 };
 
 export const DESKTOP_VALUE: InteractionFixedValue = {
@@ -62,7 +65,8 @@ export const DESKTOP_VALUE: InteractionFixedValue = {
   radius: 60,
   pivotGap: 280,
   padding: 60,
-  edgeLength: 50,
+  edgeLength: 78,
+  velocity: 5,
 };
 
 export const WIDE_VALUE: InteractionFixedValue = {
@@ -73,5 +77,33 @@ export const WIDE_VALUE: InteractionFixedValue = {
   radius: 60,
   pivotGap: 280,
   padding: 60,
-  edgeLength: 60,
+  edgeLength: 78,
+  velocity: 5,
 };
+
+export const colors = [
+  "#452CDD",
+  "#452CDD",
+  "#452CDD",
+  "#452CDD",
+  "#452CDD",
+  "#412AD1",
+  "#3E27C6",
+  "#3A25BA",
+  "#3623AE",
+  "#3320A3",
+  "#2F1E97",
+  "#2C1C8C",
+  "#281980",
+  "#241774",
+  "#211569",
+  "#1D135D",
+  "#191051",
+  "#160E46",
+  "#120C3A",
+  "#0F092F",
+  "#0B0723",
+  "#070517",
+  "#04020C",
+  "#000000",
+];
