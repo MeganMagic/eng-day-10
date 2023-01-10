@@ -5,6 +5,7 @@ const theme: DefaultTheme = {
     mobile: "@media screen",
     tablet: "@media screen and (min-width: 768px)",
     desktop: "@media screen and (min-width: 1280px)",
+    wide: "@media screen and (min-width: 1920px)",
   },
   color: {
     black: "#000000",
