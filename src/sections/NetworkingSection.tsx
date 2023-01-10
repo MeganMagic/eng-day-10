@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import HandshakeEmoji from "../assets/emoji-handshake.png";
 import NetworkingSectionMap from "../assets/networking-section-map.png";
+import BowEmoji from "../assets/emoji-bow.png";
 
 const NetworkingSectionWrapper = styled.section`
   display: flex;
@@ -98,6 +99,33 @@ const NetworkingSectionWrapper = styled.section`
       letter-spacing: -0.04em;
       color: #aaaaaa;
     }
+    
+    .temp-card {
+      width: 315px;
+      background: #191919;
+      border-radius: 20px;
+      padding: 80px 0;
+      
+      > img {
+        width: 48px;
+        margin-bottom: 10px;
+      }
+      
+      .info-title {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: -0.04em;
+      }
+      
+      .info-description {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.04em;
+        color: #CCCCCC;
+      }
+    }
   }
 
   ${({ theme }) => theme.breakpoint.tablet} {
@@ -158,7 +186,37 @@ const NetworkingSectionWrapper = styled.section`
         font-size: 14px;
         line-height: 21px;
       }
+
+      .temp-card {
+        width: 360px;
+        background: #191919;
+        border-radius: 20px;
+        padding: 80px 0;
+
+        > img {
+          width: 48px;
+          margin-bottom: 15px;
+        }
+
+        .info-title {
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 27px;
+          letter-spacing: -0.04em;
+          margin-bottom: 8px;
+        }
+
+        .info-description {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: -0.04em;
+          color: #CCCCCC;
+        }
+      }
     }
+    
+    
   }
 `;
 
@@ -177,25 +235,30 @@ const NetworkingSection = () => {
         </p>
       </div>
       <div className="section-content">
-        <article className="networking-location-card">
-          <div className="image-wrapper">
-            <img src={NetworkingSectionMap} alt="회식 장소 지도" />
-          </div>
-          <div className="card-description">
-            <p className="location-name">산에산 화덕구이 발산점</p>
-            <p className="location-address">
-              서울 강서구 공항대로 236 쿠쿠마곡빌딩 11층
-              <br />/ 5호선 발산역 8번출구 도보 5분
-            </p>
-          </div>
-        </article>
-        <div className="note-box">
-          <p className="note">
-            * 더 괜찮은 회식 장소를 아는 경우 추천 부탁드려요 🙇‍♀️
-          </p>
-          <p className="note">
-            * 행사 후 회식 참여가 어려운 경우 미리 말씀해주세요
-          </p>
+        {/*<article className="networking-location-card">*/}
+        {/*  <div className="image-wrapper">*/}
+        {/*    <img src={NetworkingSectionMap} alt="회식 장소 지도" />*/}
+        {/*  </div>*/}
+        {/*  <div className="card-description">*/}
+        {/*    <p className="location-name">산에산 화덕구이 발산점</p>*/}
+        {/*    <p className="location-address">*/}
+        {/*      서울 강서구 공항대로 236 쿠쿠마곡빌딩 11층*/}
+        {/*      <br />/ 5호선 발산역 8번출구 도보 5분*/}
+        {/*    </p>*/}
+        {/*  </div>*/}
+        {/*</article>*/}
+        {/*<div className="note-box">*/}
+        {/*  <p className="note">*/}
+        {/*    * 더 괜찮은 회식 장소를 아는 경우 추천 부탁드려요 🙇‍♀️*/}
+        {/*  </p>*/}
+        {/*  <p className="note">*/}
+        {/*    * 행사 후 회식 참여가 어려운 경우 미리 말씀해주세요*/}
+        {/*  </p>*/}
+        {/*</div>*/}
+        <div className="temp-card">
+          <img src={BowEmoji} alt="사과 이모지" />
+          <p className="info-title">장소 논의 중입니다</p>
+          <p className="info-description">장소가 정해지면 ENG채널을 통해 공지 드리겠습니다.</p>
         </div>
       </div>
     </NetworkingSectionWrapper>

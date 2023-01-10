@@ -8,27 +8,25 @@ import speakerImg4 from "../assets/talk-section-speaker-4.png";
 
 const TALKS_DATA = [
   {
-    title: <>발표 제목입니다</>,
-    speaker: "발표자1",
-    interviewUrl: "https://codestates.com",
+    title: <>알쓸신잡 - 객체지향편</>,
+    speaker: "오원섭",
+    interviewUrl: "https://codestates-jepumtim-beulrogeu.webflow.io/post/10th-engday-world-with-a-reason",
     imgSrc: speakerImg1,
   },
   {
     title: <>발표 제목입니다</>,
-    speaker: "발표자2",
-    interviewUrl: "https://codestates.com",
+    speaker: "정윤조",
     imgSrc: speakerImg2,
   },
   {
-    title: <>발표 제목입니다</>,
-    speaker: "발표자3",
-    interviewUrl: "https://codestates.com",
+    title: <>더 나은 BOWL 만들기</>,
+    speaker: "신효정",
     imgSrc: speakerImg3,
   },
   {
-    title: <>발표 제목입니다</>,
-    speaker: "발표자4",
-    interviewUrl: "https://codestates.com",
+    title: <>다양한 QA툴 분석하기 <br/>(가제)</>,
+    speaker: "정슬찬",
+    interviewUrl: "https://codestates-jepumtim-beulrogeu.webflow.io/post/10th-engday-imagine-customers",
     imgSrc: speakerImg4,
   },
 ];
@@ -163,7 +161,7 @@ const TalkSectionWrapper = styled.div`
 
       .talk-list-item {
         display: grid;
-        grid-template-columns: 365px 275px;
+        grid-template-columns: 305px 235px;
         grid-template-rows: 320px;
         border-radius: 20px;
 
@@ -232,7 +230,7 @@ const TalkSection: React.FC = () => {
                 <h3>{talk.title}</h3>
                 <p>{talk.speaker}</p>
               </div>
-              <div className="button-box">
+              {talk.interviewUrl && <div className="button-box">
                 <button
                   onClick={() => {
                     window.open(talk.interviewUrl);
@@ -240,7 +238,7 @@ const TalkSection: React.FC = () => {
                 >
                   사전 인터뷰 보기
                 </button>
-              </div>
+              </div>}
             </div>
             <div className="img-container">
               <img src={talk.imgSrc} alt={`${talk.title} 발표 관련 이미지`} />
