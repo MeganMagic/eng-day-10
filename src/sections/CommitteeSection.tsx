@@ -1,6 +1,6 @@
 import styled from "styled-components";
 // TODO: 손하트 이모지로 변경
-import CalendarEmoji from "../assets/emoji-calendar.png";
+import HeartEmoji from "../assets/emoji-heart.png";
 import CommitteeDonghoonProfile from "../assets/committee-section-donghoon.png";
 import CommitteeJunghoProfile from "../assets/committee-section-jungho.png";
 import CommitteeTaeyoungProfile from "../assets/committee-section-taeyoung.png";
@@ -176,7 +176,7 @@ const CommitteeSection = () => {
     <CommitteeSectionWrapper id={"committee"}>
       <div className="title-box">
         <div className="emoji-box">
-          <img src={CalendarEmoji} alt="손하트 이모지" />
+          <img src={HeartEmoji} alt="손하트 이모지" />
         </div>
         <h2 className="section-title">준비한 사람들</h2>
       </div>

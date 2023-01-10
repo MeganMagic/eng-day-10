@@ -14,7 +14,7 @@ const TALKS_DATA = [
     imgSrc: speakerImg1,
   },
   {
-    title: <>발표 제목입니다</>,
+    title: <>(발표 제목 미정)</>,
     speaker: "정윤조",
     imgSrc: speakerImg2,
   },

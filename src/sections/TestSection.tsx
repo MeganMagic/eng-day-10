@@ -235,10 +235,6 @@ const TestSection = () => {
           <p>* 상품과 문제풀이 링크는 당일에 공개됩니다.</p>
         </div>
       </div>
-      <aside className="info-banner">
-        <img src={TrumpetEmoji} alt="나팔 이모지" />
-        <p>잠깐! 문제풀이를 위해 노트북을 꼭 지참해주세요</p>
-      </aside>
     </TimetableSectionWrapper>
   );
 };
