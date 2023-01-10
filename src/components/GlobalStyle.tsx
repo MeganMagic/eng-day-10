@@ -29,6 +29,15 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
     background-color: unset;
   }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
 `;
 
 export default GlobalStyle;

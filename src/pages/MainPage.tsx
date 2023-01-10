@@ -7,7 +7,7 @@ import NetworkingSection from "../sections/NetworkingSection";
 import TimetableSection from "../sections/TimetableSection";
 import CommitteeSection from "../sections/CommitteeSection";
 import ArchivingSection from "../sections/ArchivingSection";
-import Header from "../components/Interaction/Header";
+import Header from "../components/Header";
 import TestSection from "../sections/TestSection";
 
 const MainPageWrapper = styled.div`

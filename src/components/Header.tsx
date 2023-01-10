@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 import { Link, useLocation } from "react-router-dom";
-import MenuIcon from "../MenuIcon";
+import MenuIcon from "./MenuIcon";
 
 const Header: React.FC = () => {
   const { hash } = useLocation();
@@ -42,11 +42,16 @@ const Header: React.FC = () => {
 
   return (
     <HeaderWrapper isOpened={isOpened}>
-      <p className="header-logo">
-        CODESTATES
-        <br />
-        ENGINEERING DAY
-      </p>
+      <Link
+        to={"/"}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <p className="header-logo">
+          CODESTATES
+          <br />
+          ENGINEERING DAY
+        </p>
+      </Link>
 
       <HeaderMenuMo>
         <MenuIcon isOpened={isOpened} onClick={handleMenuToggle} />
