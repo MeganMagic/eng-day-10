@@ -261,7 +261,7 @@ const OutlineSection: React.FC = () => {
           10번째 엔지니어링 데이는 <strong>오프라인</strong>으로 진행됩니다.
         </p>
         <p className="section-description">
-          <strong>12월 27일, 마곡캠퍼스에서 만나요!</strong> 🙇🏻
+          <strong>1월 13일, 마곡캠퍼스에서 만나요!</strong> 🙇🏻
         </p>
       </div>
       <LocationCard>
