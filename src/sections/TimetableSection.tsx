@@ -104,11 +104,6 @@ const TimetableSection = () => {
           <img src={CalendarEmoji} alt="달력 이모지" />
         </div>
         <h2 className="section-title">행사 시간표</h2>
-        <p className="section-description">
-          회식... 아니 네트워킹을 통해
-          <br />
-          ENG 크루들과 많은 이야기를 나눠보세요
-        </p>
       </div>
       <div className="section-content">
         <img

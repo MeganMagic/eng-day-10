@@ -18,7 +18,7 @@ const HeroSection: React.FC = () => {
         </p>
         <p className="text-title-kr">제 10회 코드스테이츠 엔지니어링데이</p>
         <p className="text-info">
-          2022.12.26 (화) 13:00 - 18:00
+          2023.01.13 (금) 13:00 - 18:00
           <br />
           코드스테이츠 마곡캠퍼스
         </p>

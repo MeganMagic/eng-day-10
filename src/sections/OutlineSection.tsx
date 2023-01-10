@@ -246,7 +246,7 @@ const OutlineSection: React.FC = () => {
         <p className="section-description">
           <strong>엔지니어링 데이</strong>는 ENG팀 크루들이 함께 모여
           <br />
-          각자의 고민과 경험, 인사이트를 공유는 자리입니다.
+          각자의 고민과 경험, 인사이트를 공유하는 자리입니다.
         </p>
         <p className="section-description">
           2022년 2월 25일에 처음 시작한 엔지니어링 데이가
