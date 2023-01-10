@@ -92,7 +92,7 @@ const Interaction: React.FC = () => {
         this.pos.x,
         this.pos.y,
         radius + radiusWeight,
-        `rgba(${r}, ${g}, ${b}, ${opacityWeight})`
+        `rgba(${r}, ${g}, ${b}, ${opacityWeight <= 0 ? 0 : opacityWeight})`
       );
     }
   }
