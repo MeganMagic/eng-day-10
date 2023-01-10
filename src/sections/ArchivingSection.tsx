@@ -74,7 +74,7 @@ const ArchivingSection = () => {
         <article className="archiving-card">
           <img src={FilmEmoji} alt="필름 이모지" />
           <p>지난 엔지니어링 데이가 <br />궁금하다면?</p>
-          <button onClick={() => window.open("https://codestates.com")}>다시 보러 가기</button>
+          <button onClick={() => window.open("https://www.notion.so/codestates/de1577d897514e4ab75ad459adccd177")}>다시 보러 가기</button>
         </article>
       </div>
     </ArchivingSectionWrapper>
