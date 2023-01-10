@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import HandshakeEmoji from "../assets/emoji-handshake.png";
-import NetworkingSectionMap  from "../assets/networking-section-map.png";
+import NetworkingSectionMap from "../assets/networking-section-map.png";
 
 const NetworkingSectionWrapper = styled.section`
   display: flex;
@@ -8,7 +8,7 @@ const NetworkingSectionWrapper = styled.section`
   align-items: center;
   text-align: center;
   padding: 80px 0;
-  
+
   .title-box {
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ const NetworkingSectionWrapper = styled.section`
       letter-spacing: -0.04em;
       margin-bottom: 10px;
     }
-    
+
     > p {
       font-weight: 400;
       font-size: 14px;
@@ -45,21 +45,21 @@ const NetworkingSectionWrapper = styled.section`
       letter-spacing: -0.04em;
     }
   }
-  
+
   .section-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     .networking-location-card {
       display: flex;
       flex-direction: column;
       width: 315px;
-      
+
       .image-wrapper {
         width: 100%;
         height: 240px;
-        
+
         img {
           width: 100%;
           height: 100%;
@@ -67,13 +67,13 @@ const NetworkingSectionWrapper = styled.section`
           border-radius: 30px 30px 0 0;
         }
       }
-      
+
       .card-description {
         background: #191919;
         padding: 24px 0 32px;
         border-radius: 0 0 30px 30px;
         margin-bottom: 16px;
-        
+
         .location-name {
           font-weight: 700;
           font-size: 14px;
@@ -81,7 +81,7 @@ const NetworkingSectionWrapper = styled.section`
           letter-spacing: -0.025em;
           margin-bottom: 4px;
         }
-        
+
         .location-address {
           font-weight: 400;
           font-size: 12px;
@@ -90,17 +90,17 @@ const NetworkingSectionWrapper = styled.section`
         }
       }
     }
-    
+
     .note-box {
       font-weight: 400;
       font-size: 12px;
       line-height: 18px;
       letter-spacing: -0.04em;
-      color: #AAAAAA;
+      color: #aaaaaa;
     }
   }
 
-  ${({theme}) => theme.breakpoint.tablet} {
+  ${({ theme }) => theme.breakpoint.tablet} {
     padding: 120px 0 180px;
 
     .title-box {
@@ -163,36 +163,43 @@ const NetworkingSectionWrapper = styled.section`
 `;
 
 const NetworkingSection = () => {
-  return <NetworkingSectionWrapper>
-    <div className="title-box">
-      <div className="emoji-box">
-        <img src={HandshakeEmoji} alt="악수하는 이모지"/>
-      </div>
-      <h2 className="section-title">네트워킹</h2>
-      <p className="section-description">
-        회식... 아니 네트워킹을 통해
-        <br />ENG 크루들과 많은 이야기를 나눠보세요
-      </p>
-    </div>
-    <div className="section-content">
-      <article className="networking-location-card">
-        <div className="image-wrapper">
-          <img src={NetworkingSectionMap} alt="회식 장소 지도"/>
+  return (
+    <NetworkingSectionWrapper id={"networking"}>
+      <div className="title-box">
+        <div className="emoji-box">
+          <img src={HandshakeEmoji} alt="악수하는 이모지" />
         </div>
-        <div className="card-description">
-          <p className="location-name">산에산 화덕구이 발산점</p>
-          <p className="location-address">
-            서울 강서구 공항대로 236 쿠쿠마곡빌딩 11층
-            <br />/ 5호선 발산역 8번출구 도보 5분
+        <h2 className="section-title">네트워킹</h2>
+        <p className="section-description">
+          회식... 아니 네트워킹을 통해
+          <br />
+          ENG 크루들과 많은 이야기를 나눠보세요
+        </p>
+      </div>
+      <div className="section-content">
+        <article className="networking-location-card">
+          <div className="image-wrapper">
+            <img src={NetworkingSectionMap} alt="회식 장소 지도" />
+          </div>
+          <div className="card-description">
+            <p className="location-name">산에산 화덕구이 발산점</p>
+            <p className="location-address">
+              서울 강서구 공항대로 236 쿠쿠마곡빌딩 11층
+              <br />/ 5호선 발산역 8번출구 도보 5분
+            </p>
+          </div>
+        </article>
+        <div className="note-box">
+          <p className="note">
+            * 더 괜찮은 회식 장소를 아는 경우 추천 부탁드려요 🙇‍♀️
+          </p>
+          <p className="note">
+            * 행사 후 회식 참여가 어려운 경우 미리 말씀해주세요
           </p>
         </div>
-      </article>
-      <div className="note-box">
-        <p className="note">* 더 괜찮은 회식 장소를 아는 경우 추천 부탁드려요 🙇‍♀️</p>
-        <p className="note">* 행사 후 회식 참여가 어려운 경우 미리 말씀해주세요</p>
       </div>
-    </div>
-  </NetworkingSectionWrapper>
-}
+    </NetworkingSectionWrapper>
+  );
+};
 
 export default NetworkingSection;

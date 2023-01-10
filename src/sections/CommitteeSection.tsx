@@ -13,7 +13,7 @@ const CommitteeSectionWrapper = styled.section`
   align-items: center;
   text-align: center;
   padding: 80px 0;
-  
+
   .title-box {
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@ const CommitteeSectionWrapper = styled.section`
       letter-spacing: -0.04em;
       margin-bottom: 10px;
     }
-    
+
     > p {
       font-weight: 400;
       font-size: 14px;
@@ -50,7 +50,7 @@ const CommitteeSectionWrapper = styled.section`
       letter-spacing: -0.04em;
     }
   }
-  
+
   .section-content {
     .committee-list {
       display: grid;
@@ -59,7 +59,7 @@ const CommitteeSectionWrapper = styled.section`
       row-gap: 16px;
       column-gap: 16px;
       margin-bottom: 40px;
-      
+
       .committee-list-item {
         img {
           width: 120px;
@@ -73,12 +73,12 @@ const CommitteeSectionWrapper = styled.section`
         }
       }
     }
-    
+
     .honorary-member {
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+
       span {
         font-weight: 700;
         font-size: 18px;
@@ -99,7 +99,7 @@ const CommitteeSectionWrapper = styled.section`
     }
   }
 
-  ${({theme}) => theme.breakpoint.tablet} {
+  ${({ theme }) => theme.breakpoint.tablet} {
     padding: 120px 0 180px;
 
     .title-box {
@@ -155,45 +155,51 @@ const CommitteeSectionWrapper = styled.section`
 const COMMITTEE_DATA = [
   {
     name: "김동훈",
-    imgSrc: CommitteeDonghoonProfile
+    imgSrc: CommitteeDonghoonProfile,
   },
   {
     name: "최정호",
-    imgSrc: CommitteeJunghoProfile
+    imgSrc: CommitteeJunghoProfile,
   },
   {
     name: "박태영",
-    imgSrc: CommitteeTaeyoungProfile
+    imgSrc: CommitteeTaeyoungProfile,
   },
   {
     name: "송진경",
-    imgSrc: CommitteeJinkyoungProfile
+    imgSrc: CommitteeJinkyoungProfile,
   },
-]
+];
 
 const CommitteeSection = () => {
-  return <CommitteeSectionWrapper>
-    <div className="title-box">
-      <div className="emoji-box">
-        <img src={CalendarEmoji} alt="손하트 이모지"/>
+  return (
+    <CommitteeSectionWrapper id={"committee"}>
+      <div className="title-box">
+        <div className="emoji-box">
+          <img src={CalendarEmoji} alt="손하트 이모지" />
+        </div>
+        <h2 className="section-title">준비한 사람들</h2>
       </div>
-      <h2 className="section-title">준비한 사람들</h2>
-    </div>
-    <div className="section-content">
-      <ul className="committee-list">{
-        COMMITTEE_DATA.map(committee => <li className="committee-list-item">
-            <img src={committee.imgSrc} alt={`${committee.name}의 프로필 사진`}/>
-            <p>{committee.name}</p>
-          </li>
-        )}
-      </ul>
-      <div className="honorary-member">
-        <span>and...</span>
-        <img src={CommitteeJinseokProfile} alt="정진석의 프로필 사진"/>
-        <p className="honorary-member-name">정진석</p>
+      <div className="section-content">
+        <ul className="committee-list">
+          {COMMITTEE_DATA.map((committee) => (
+            <li className="committee-list-item">
+              <img
+                src={committee.imgSrc}
+                alt={`${committee.name}의 프로필 사진`}
+              />
+              <p>{committee.name}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="honorary-member">
+          <span>and...</span>
+          <img src={CommitteeJinseokProfile} alt="정진석의 프로필 사진" />
+          <p className="honorary-member-name">정진석</p>
+        </div>
       </div>
-    </div>
-  </CommitteeSectionWrapper>
+    </CommitteeSectionWrapper>
+  );
 };
 
 export default CommitteeSection;

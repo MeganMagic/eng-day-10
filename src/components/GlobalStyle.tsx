@@ -4,6 +4,10 @@ import { normalize } from "styled-normalize";
 const GlobalStyle = createGlobalStyle`
   ${normalize}
   
+  * {
+    box-sizing: border-box;
+  }
+  
   body {
     background-color: #000000;
   }
@@ -22,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     appearance: none;
     border: none;
     outline: none;
+    background-color: unset;
   }
 `;
 

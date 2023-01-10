@@ -1,20 +1,20 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-
 import GlobalStyle from "./components/GlobalStyle";
-import MainPage from "./pages/MainPage";
 import theme from "./styles/theme";
+import MainPage from "./pages/MainPage";
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-
-      <div className="page-wrapper">
-        {/*<header>header</header>*/}
-        <MainPage />
-      </div>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Routes>
+          <Route path="" element={<MainPage />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 

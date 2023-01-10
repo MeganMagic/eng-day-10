@@ -267,9 +267,9 @@ const Interaction: React.FC = () => {
       [
         new Edge(1, 1, 2, 0),
         new Edge(0, 0, 1, 1),
-        new Edge(1, 2, 2, 3),
         new Edge(2, 3, 1, 4),
         new Edge(1, 3, 0, 4),
+        new Edge(1, 2, 2, 3),
       ],
       [
         new Edge(1, 0, 0, 1),
@@ -281,9 +281,9 @@ const Interaction: React.FC = () => {
       [
         new Edge(1, 0, 2, 1),
         new Edge(0, 1, 1, 0),
+        new Edge(1, 4, 2, 3),
         new Edge(0, 3, 1, 4),
         new Edge(1, 2, 0, 3),
-        new Edge(1, 4, 2, 3),
       ],
       [
         new Edge(1, 0, 0, 1),

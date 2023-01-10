@@ -11,41 +11,40 @@ const TALKS_DATA = [
     title: <>발표 제목입니다</>,
     speaker: "발표자1",
     interviewUrl: "https://codestates.com",
-    imgSrc: speakerImg1
+    imgSrc: speakerImg1,
   },
   {
     title: <>발표 제목입니다</>,
     speaker: "발표자2",
     interviewUrl: "https://codestates.com",
-    imgSrc: speakerImg2
+    imgSrc: speakerImg2,
   },
   {
     title: <>발표 제목입니다</>,
     speaker: "발표자3",
     interviewUrl: "https://codestates.com",
-    imgSrc: speakerImg3
+    imgSrc: speakerImg3,
   },
   {
     title: <>발표 제목입니다</>,
     speaker: "발표자4",
     interviewUrl: "https://codestates.com",
-    imgSrc: speakerImg4
-  }
-]
-
+    imgSrc: speakerImg4,
+  },
+];
 
 const TalkSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 80px 0;
-  
+
   .title-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
-    
+
     .emoji-box {
       width: 80px;
       height: 80px;
@@ -55,12 +54,12 @@ const TalkSectionWrapper = styled.div`
       justify-content: center;
       align-items: center;
       margin-bottom: 10px;
-      
+
       img {
         width: 40px;
       }
     }
-    
+
     > h2 {
       font-weight: 900;
       font-size: 24px;
@@ -68,18 +67,18 @@ const TalkSectionWrapper = styled.div`
       letter-spacing: -0.04em;
     }
   }
-  
+
   .talk-list {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    
+
     .talk-list-item {
       display: grid;
       grid-template-columns: 186px 129px;
       grid-template-rows: 220px;
       border-radius: 20px;
-      
+
       .text-box {
         display: flex;
         flex-direction: column;
@@ -87,7 +86,7 @@ const TalkSectionWrapper = styled.div`
         background: #191919;
         padding: 20px;
         border-radius: 20px 0 0 20px;
-        
+
         .talk-texts {
           > h3 {
             font-weight: 700;
@@ -96,15 +95,15 @@ const TalkSectionWrapper = styled.div`
             letter-spacing: -0.04em;
             margin-bottom: 8px;
           }
-          
+
           > p {
             font-weight: 400;
             font-size: 14px;
             line-height: 21px;
-            color: #CCCCCC;
+            color: #cccccc;
           }
         }
-        
+
         .button-box {
           button {
             width: 100%;
@@ -116,16 +115,16 @@ const TalkSectionWrapper = styled.div`
             font-size: 12px;
             line-height: 18px;
             letter-spacing: -0.04em;
-            color: #FFFFFF;
+            color: #ffffff;
             cursor: pointer;
           }
         }
       }
-      
+
       .img-container {
         width: 100%;
         height: 100%;
-        
+
         img {
           border-radius: 0 20px 20px 0;
           width: 100%;
@@ -136,7 +135,7 @@ const TalkSectionWrapper = styled.div`
     }
   }
 
-  ${({theme}) => theme.breakpoint.tablet} {
+  ${({ theme }) => theme.breakpoint.tablet} {
     padding: 120px 0 180px;
 
     .title-box {
@@ -195,7 +194,7 @@ const TalkSectionWrapper = styled.div`
               font-size: 14px;
               line-height: 21px;
               letter-spacing: -0.04em;
-              color: #FFFFFF;
+              color: #ffffff;
               cursor: pointer;
             }
           }
@@ -214,20 +213,19 @@ const TalkSectionWrapper = styled.div`
       }
     }
   }
-`
-
+`;
 
 const TalkSection: React.FC = () => {
   return (
-    <TalkSectionWrapper>
+    <TalkSectionWrapper id={"talk"}>
       <div className="title-box">
         <div className="emoji-box">
-          <img src={ClapEmoji} alt="박수치는 이모지"/>
+          <img src={ClapEmoji} alt="박수치는 이모지" />
         </div>
         <h2 className="section-title">발표 세션 소개</h2>
       </div>
       <ul className="talk-list">
-        {TALKS_DATA.map(talk => (
+        {TALKS_DATA.map((talk) => (
           <li className="talk-list-item">
             <div className="text-box">
               <div className="talk-texts">
@@ -235,13 +233,17 @@ const TalkSection: React.FC = () => {
                 <p>{talk.speaker}</p>
               </div>
               <div className="button-box">
-                <button onClick={() => {
-                  window.open(talk.interviewUrl)
-                }}>사전 인터뷰 보기</button>
+                <button
+                  onClick={() => {
+                    window.open(talk.interviewUrl);
+                  }}
+                >
+                  사전 인터뷰 보기
+                </button>
               </div>
             </div>
             <div className="img-container">
-              <img src={talk.imgSrc} alt={`${talk.title} 발표 관련 이미지`}/>
+              <img src={talk.imgSrc} alt={`${talk.title} 발표 관련 이미지`} />
             </div>
           </li>
         ))}
