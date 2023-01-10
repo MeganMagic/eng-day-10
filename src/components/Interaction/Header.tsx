@@ -1,23 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
+import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "../MenuIcon";
 
 const Header: React.FC = () => {
+  const { hash } = useLocation();
+  const hashRef = useRef(hash);
+  const scrolledRef = useRef(false);
   const [isOpened, setIsOpened] = useState(false);
 
-  const onMobileMenuClicked = () => {
+  const handleMenuToggle = () => {
     setIsOpened(!isOpened);
   };
 
   useEffect(() => {
     const resetIsOpened = () => {
-      const windowWidth = window.innerWidth;
-      if (windowWidth >= 1280 && isOpened) setIsOpened(false);
+      if (window.innerWidth >= 1280 && isOpened) setIsOpened(false);
     };
     window.addEventListener("resize", resetIsOpened);
-
-    return () => resetIsOpened();
+    return () => window.removeEventListener("resize", resetIsOpened);
   }, [isOpened]);
+
+  useEffect(() => {
+    if (hash) {
+      if (hashRef.current !== hash) {
+        hashRef.current = hash;
+        scrolledRef.current = false;
+      }
+
+      if (!scrolledRef.current) {
+        const id = hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          scrolledRef.current = true;
+          setIsOpened(false);
+        }
+      }
+    }
+  }, [hash]);
 
   return (
     <HeaderWrapper isOpened={isOpened}>
@@ -28,21 +49,26 @@ const Header: React.FC = () => {
       </p>
 
       <HeaderMenuMo>
-        <MenuIcon isOpened={isOpened} onClick={onMobileMenuClicked} />
+        <MenuIcon isOpened={isOpened} onClick={handleMenuToggle} />
       </HeaderMenuMo>
 
       <HeaderMenuMoNav isOpened={isOpened}>
         <div className="nav-item-wrapper">
-          <p className="nav-item">행사 소개</p>
-          <p className="nav-item">발표 세션</p>
-          <p className="nav-item">ENG 능력평가</p>
-          <p className="nav-item">네트워킹</p>
-          <p className="nav-item">행사 시간표</p>
-          <p className="nav-item">준비한 사람들</p>
+          {navItems.map((item) => (
+            <Link to={`#${item.id}`} key={item.id}>
+              <button className="nav-item">{item.label}</button>
+            </Link>
+          ))}
         </div>
       </HeaderMenuMoNav>
 
-      <HeaderMenu></HeaderMenu>
+      <HeaderMenu>
+        {navItems.map((item) => (
+          <Link to={`#${item.id}`} key={item.id}>
+            <button className="menu-item">{item.label}</button>
+          </Link>
+        ))}
+      </HeaderMenu>
     </HeaderWrapper>
   );
 };
@@ -80,10 +106,20 @@ const HeaderWrapper = styled.header<{ isOpened: boolean }>`
     font-size: 14px;
     line-height: 14px;
   }
+
+  ${({ theme }) => theme.breakpoint.desktop} {
+    height: 80px;
+    padding: 0 50px;
+
+    .header-logo {
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
 `;
 
-const HeaderMenuMo = styled.button`
-  background-color: unset;
+const HeaderMenuMo = styled.div`
+  display: block;
   ${({ theme }) => theme.breakpoint.desktop} {
     display: none;
   }
@@ -142,6 +178,52 @@ const HeaderMenuMoNav = styled.nav<{ isOpened: boolean }>`
 const HeaderMenu = styled.nav`
   display: none;
   ${({ theme }) => theme.breakpoint.desktop} {
-    display: block;
+    display: flex;
+  }
+
+  flex-direction: row;
+  column-gap: 10px;
+
+  .menu-item {
+    padding: 9px 16px 7px 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.025em;
+    color: #aaaaaa;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: #222222;
+      color: #ffffff;
+    }
   }
 `;
+
+const navItems = [
+  {
+    id: "outline",
+    label: "행사 소개",
+  },
+  {
+    id: "talk",
+    label: "발표 세션",
+  },
+  {
+    id: "eng-test",
+    label: "ENG 능력평가",
+  },
+  {
+    id: "timetable",
+    label: "행사 시간표",
+  },
+  {
+    id: "networking",
+    label: "네트워킹",
+  },
+  {
+    id: "committee",
+    label: "준비한 사람들",
+  },
+];

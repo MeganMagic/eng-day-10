@@ -2,7 +2,7 @@ import styled from "styled-components";
 import CalendarEmoji from "../assets/emoji-calendar.png";
 import TimetableImageMobile from "../assets/timetable-section-main-mobile.png";
 import TimetableImageTablet from "../assets/timetable-section-main-tablet.png";
-import {useWindowSize} from "../utils/hooks/useWindowSize";
+import { useWindowSize } from "../utils/hooks/useWindowSize";
 
 const TimetableSectionWrapper = styled.section`
   display: flex;
@@ -10,7 +10,7 @@ const TimetableSectionWrapper = styled.section`
   align-items: center;
   text-align: center;
   padding: 80px 0;
-  
+
   .title-box {
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@ const TimetableSectionWrapper = styled.section`
       letter-spacing: -0.04em;
       margin-bottom: 10px;
     }
-    
+
     > p {
       font-weight: 400;
       font-size: 14px;
@@ -47,14 +47,14 @@ const TimetableSectionWrapper = styled.section`
       letter-spacing: -0.04em;
     }
   }
-  
+
   .section-content {
     img {
       width: 315px;
     }
   }
 
-  ${({theme}) => theme.breakpoint.tablet} {
+  ${({ theme }) => theme.breakpoint.tablet} {
     padding: 120px 0 180px;
 
     .title-box {
@@ -97,21 +97,27 @@ const TimetableSection = () => {
   const { width } = useWindowSize();
   const isMobile = width ? width < 768 : false;
 
-  return <TimetableSectionWrapper>
-    <div className="title-box">
-      <div className="emoji-box">
-        <img src={CalendarEmoji} alt="달력 이모지"/>
+  return (
+    <TimetableSectionWrapper id={"timetable"}>
+      <div className="title-box">
+        <div className="emoji-box">
+          <img src={CalendarEmoji} alt="달력 이모지" />
+        </div>
+        <h2 className="section-title">행사 시간표</h2>
+        <p className="section-description">
+          회식... 아니 네트워킹을 통해
+          <br />
+          ENG 크루들과 많은 이야기를 나눠보세요
+        </p>
       </div>
-      <h2 className="section-title">행사 시간표</h2>
-      <p className="section-description">
-        회식... 아니 네트워킹을 통해
-        <br />ENG 크루들과 많은 이야기를 나눠보세요
-      </p>
-    </div>
-    <div className="section-content">
-      <img src={isMobile ? TimetableImageMobile : TimetableImageTablet} alt="엔지니어링데이 시간표"/>
-    </div>
-  </TimetableSectionWrapper>
-}
+      <div className="section-content">
+        <img
+          src={isMobile ? TimetableImageMobile : TimetableImageTablet}
+          alt="엔지니어링데이 시간표"
+        />
+      </div>
+    </TimetableSectionWrapper>
+  );
+};
 
 export default TimetableSection;
