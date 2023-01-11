@@ -14,7 +14,7 @@ const TALKS_DATA = [
     imgSrc: speakerImg1,
   },
   {
-    title: <>(발표 제목 미정)</>,
+    title: <>Notion 요모조모</>,
     speaker: "정윤조",
     imgSrc: speakerImg2,
   },
@@ -24,7 +24,7 @@ const TALKS_DATA = [
     imgSrc: speakerImg3,
   },
   {
-    title: <>다양한 QA툴 분석하기 <br/>(가제)</>,
+    title: <>jira의 QAlity 사용기</>,
     speaker: "정슬찬",
     interviewUrl: "https://codestates-jepumtim-beulrogeu.webflow.io/post/10th-engday-imagine-customers",
     imgSrc: speakerImg4,
